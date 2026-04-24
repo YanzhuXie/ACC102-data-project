@@ -82,3 +82,115 @@ This project connects to WRDS via the `wrds` Python package. Data is fetched in 
 ## 3. Methods
 
 ### Analysis Workflow
+
+Step 1: Connect to WRDS database (requires user credentials)
+Step 2: Fetch stock price data from CRSP (crsp.dsf + crsp.dsenames)
+Step 3: Fetch financial statement data from Compustat (comp.funda + comp.company)
+Step 4: Fetch S&P 500 benchmark data from CRSP (crsp.dsi)
+Step 5: Calculate market performance metrics
+Step 6: Calculate financial health metrics
+Step 7: Perform risk assessment scoring
+Step 8: Generate 4-panel visualization with earnings season annotations
+Step 9: Provide investment reference based on quantitative analysis
+
+
+### Calculated Metrics
+
+**Market Performance:**
+- **Cumulative Return (%):** Total return over the entire analysis period = (Final Price / Initial Price - 1) × 100
+- **Annualized Volatility (%):** Standard deviation of daily returns × √252, measuring price fluctuation risk
+- **Maximum Drawdown (%):** Largest peak-to-trough decline, measuring worst-case historical loss
+- **Sharpe Ratio:** (Mean excess return over risk-free rate) / Volatility, measuring risk-adjusted return (risk-free rate = 2%)
+- **Excess Return vs S&P 500 (%):** Cumulative return above/below the market benchmark
+
+**Financial Health (Latest Fiscal Year):**
+- **Revenue:** Total company revenue
+- **Net Income:** Bottom-line profit
+- **Gross Margin (%):** Gross Profit / Revenue × 100
+- **Net Margin (%):** Net Income / Revenue × 100
+- **Debt Ratio (%):** Long-term Debt / Total Assets × 100
+- **PE Ratio (TTM):** Price / Earnings Per Share
+- **EPS:** Earnings Per Share
+
+**Risk Assessment Factors:**
+- Volatility > 50% = "High volatility" | > 30% = "Moderate-high volatility"
+- Max Drawdown < -40% = "Severe drawdown" | < -20% = "Significant drawdown"
+- Debt Ratio > 70% = "High debt ratio" | > 50% = "Moderate debt ratio"
+
+**Investment Reference Categories:**
+- Return > 50%: "Strong uptrend - buy on dips, manage position size"
+- Return 0-50%: "Steady growth - hold and monitor fundamentals"
+- Return -20-0%: "Short-term pullback - accumulate if fundamentals intact"
+- Return < -20%: "Deep decline - reassess fundamentals carefully"
+
+### Two Analysis Modes
+
+| Feature | Mode 1: Single Company | Mode 2: Two Company Comparison |
+|---------|----------------------|-------------------------------|
+| **Text Output** | Full performance report + risk assessment | Comparison table + scoring |
+| **Chart 1** | Price trend with earnings season overlay | Normalized price comparison (Base=100) |
+| **Chart 2** | Cumulative returns (green/red shaded) | Cumulative returns comparison |
+| **Chart 3** | Drawdown analysis with max DD annotation | 60-day rolling volatility comparison |
+| **Chart 4** | Daily returns distribution histogram | Return correlation scatter plot |
+| **Scoring** | N/A | 3-point system (return, volatility, drawdown) |
+
+### Earnings Season Annotation
+All price and return charts include light gold background shading for estimated earnings season periods (mid-January, April, July, October ± 45 days). This helps users distinguish between earnings-driven volatility and other market movements.
+
+### Python Libraries Used
+- `wrds` - WRDS database connection and query execution
+- `pandas` - Data manipulation, cleaning, merging
+- `numpy` - Mathematical calculations
+- `matplotlib` - Data visualization with GridSpec layout
+- `datetime` - Date handling
+
+---
+
+## 4. Key Findings
+
+### Sample Analysis Results
+
+**Apple (AAPL) vs Microsoft (MSFT) Comparison:**
+- **Winner:** Microsoft (Score: 3-0)
+- **Correlation:** 0.699 (moderately strong positive)
+- Both companies showed similar returns (~93%) but Microsoft had slightly lower volatility (26.1% vs 26.6%) and smaller drawdown (-75.2% vs -84.3%)
+
+**Best Performer (among tested):**
+- **Costco (COST):** +141.0% cumulative return with only 22.7% volatility
+
+**US vs China Pattern:**
+- US companies averaged significantly higher returns with lower volatility
+- Chinese ADRs faced persistent headwinds, with BABA (-62.8%), JD (-59.8%), and BIDU (-61.1%) all experiencing substantial declines
+- Nvidia (NVDA) showed the highest volatility (52.8%) reflecting the AI boom cycle
+
+**Earnings Season Impact:**
+- Volatility spikes consistently appeared during earnings season windows across all technology stocks
+- Financial stocks (JPM, V) showed more moderate earnings-related fluctuations
+
+### Risk Distribution (14 analyzed companies)
+- Low Risk: 7 companies (50%)
+- Medium Risk: 7 companies (50%)
+- High Risk: 0 companies
+
+---
+
+## 5. How to Run
+
+### Prerequisites
+
+1. **WRDS Account:** Register at [wrds-www.wharton.upenn.edu](https://wrds-www.wharton.upenn.edu/)
+2. **Python 3.8+** installed on your computer
+3. **Required packages** (install via pip)
+
+### Installation Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/acc102-stock-analysis.git
+cd acc102-stock-analysis
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run the analysis
+python stock_analysis.py
