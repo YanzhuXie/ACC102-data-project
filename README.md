@@ -194,3 +194,34 @@ pip install -r requirements.txt
 
 # 3. Run the analysis
 python stock_analysis.py
+
+Usage Guide
+Launch the script - The tool will prompt for WRDS credentials
+
+Enter username and password - These are not stored; used only for the current session
+
+View company list - 15 preset companies with tickers and names are displayed
+
+Select mode:
+
+Press 1 for single company deep analysis
+
+Press 2 for two company comparison
+
+Choose company/companies by entering their number from the list
+
+Review outputs:
+
+Text analysis in the console
+
+4-panel chart displayed in a pop-up window
+
+Investment reference at the bottom
+
+Expected Outputs
+Console: Detailed performance metrics, financial data, risk assessment
+
+Charts: 4-panel visualization with earnings season annotations
+
+Runtime: ~10-20 seconds per analysis (depending on WRDS query speed)
+
