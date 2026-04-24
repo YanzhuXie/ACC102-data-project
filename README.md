@@ -356,7 +356,7 @@ This project is created for the ACC102 Mini Assignment at Xi'an Jiaotong-Liverpo
 
 Built with Python, WRDS, and attention to detail.
 
-Author: [Your Name]
+Author: Yanzhu Xie
 
 Course: ACC102 - Data Analysis for Business
 
