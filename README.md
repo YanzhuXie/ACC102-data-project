@@ -1,5 +1,6 @@
 # ACC102 - Stock Analysis Tool: US & China Company Deep Dive
 
+Description: A Python stock analysis tool that fetches real-time data from WRDS to analyze and compare 15 major US and Chinese companies. Features single-company deep analysis and two-company comparison with earnings season annotations, risk assessment, and investment insights.
 ## 1. Problem & User
 
 **Problem:** Investors and finance learners need a quick way to compare and deeply analyze stock performance across US and Chinese companies, understanding not just returns but also risk, drawdowns, financial health, and market correlations.
