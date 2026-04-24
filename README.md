@@ -225,3 +225,141 @@ Charts: 4-panel visualization with earnings season annotations
 
 Runtime: ~10-20 seconds per analysis (depending on WRDS query speed)
 
+6. Product Link / Demo
+GitHub Repository: [Link to this repository]
+
+Demo Video: [Mediasite link - to be added before submission]
+
+7. Reflection & Limitations
+What Worked Well
+Automated Data Pipeline: The WRDS connection and multi-table SQL queries successfully fetch and merge data from three different databases (CRSP stock, CRSP market, Compustat financials) in a single workflow
+
+Comprehensive Metrics: The combination of market performance (returns, volatility, drawdown) with financial health (margins, debt, PE) provides a holistic view beyond simple price charts
+
+User-Friendly Design: The numbered menu system and clear English prompts make the tool accessible to non-programmers
+
+Earnings Season Innovation: The quarterly background shading adds context that many free tools lack, helping users understand volatility patterns
+
+Cross-Market Comparison: Including both US and Chinese companies enables unique insights about market divergence
+
+Limitations
+Data Limitations:
+
+Google (GOOGL/GOOG): CRSP ticker mapping for Google's dual-class shares proved unreliable. The analysis substitutes Visa (V) as the 5th US technology-adjacent company. Future versions should use PERMNO-based queries for Google
+
+Tencent (TCEHY): As an OTC-traded ADR, Tencent has sparse CRSP coverage compared to NYSE/NASDAQ-listed stocks. Users may encounter "No data" for this ticker
+
+Financial Data Coverage: Compustat may not have the latest fiscal year for all companies, resulting in "N/A" for some financial metrics
+
+Currency Effects: Chinese ADR prices are in USD but reflect both underlying HKD/RMB stock movements and currency fluctuations, which this tool does not separate
+
+Survivorship Bias: The preset company list only includes currently-listed companies, excluding firms that may have delisted during 2021-2025
+
+Methodological Limitations:
+
+Earnings Season Estimation: The tool uses fixed quarterly windows (mid-Jan/Apr/Jul/Oct) rather than actual earnings announcement dates. Individual company earnings dates can vary by several weeks
+
+Risk-Free Rate Assumption: Sharpe ratio calculation assumes a constant 2% risk-free rate, which may not reflect actual Treasury yields during the volatile 2022-2024 rate cycle
+
+Equal-Weight Scoring: The comparison mode scores return, volatility, and drawdown equally, which may not match individual investor preferences (some may prioritize low volatility over high returns)
+
+No Portfolio Context: Single-stock analysis does not account for portfolio diversification benefits or correlation with the user's existing holdings
+
+Past Performance Limitation: All analysis is historical. The investment reference text is a quantitative summary, not a forward-looking recommendation
+
+Technical Limitations:
+
+Real-Time Dependency: The tool requires a live internet connection and WRDS access. No offline/cached mode is available
+
+Single-Thread Execution: Sequential data fetching means analyzing all 15 companies takes ~3-5 minutes
+
+Error Handling: While basic try-except blocks catch connection failures, some edge cases (e.g., partial data for delisted periods) may produce unexpected results
+
+Lessons Learned
+Database Familiarity is Critical: Different WRDS tables use different ticker formats (tic vs ticker), causing initial query failures. Testing and documentation reading are essential before writing production queries
+
+Start Simple, Then Scale: The project began with 9 companies and basic metrics. Incrementally adding companies, financial data, earnings annotations, and comparison mode made development manageable
+
+Chart Layout Matters: Initial tight_layout warnings taught me about GridSpec and subplots_adjust for reliable multi-panel visualizations
+
+User Perspective: Designing the tool from a non-technical investor's viewpoint led to features like the investment reference text and risk assessment, which differentiate this from a raw data script
+
+Future Improvements
+Short-Term (Next Version):
+
+Add actual earnings announcement dates from IBES or Refinitiv
+
+Support custom date ranges instead of fixed 2021-2025
+
+Export analysis results as PDF report
+
+Add sector labels for peer-appropriate comparisons
+
+Implement caching to speed up repeated analyses of the same company
+
+Medium-Term:
+
+Deploy as interactive Streamlit web app (Track 4 upgrade)
+
+Add portfolio-level analysis (multiple stocks with weights)
+
+Integrate macroeconomic indicators (interest rates, VIX, CPI)
+
+Support user-uploaded watchlists or custom ticker lists
+
+Add technical analysis indicators (moving averages, RSI, MACD)
+
+Long-Term:
+
+Machine learning-based volatility forecasting
+
+Natural language news sentiment integration
+
+Automated portfolio optimization (Modern Portfolio Theory)
+
+Real-time alert system for significant events
+
+Academic Context
+This project demonstrates practical application of concepts from ACC102 including:
+
+Data retrieval and cleaning from professional financial databases
+
+Statistical analysis of financial time series
+
+Risk measurement and assessment
+
+Data visualization for financial decision-making
+
+Professional documentation and reproducible research practices
+
+8. AI Disclosure
+Item	Details
+AI Tool	DeepSeek (DeepSeek-R1 model)
+Access Date	April 2026
+Used For	SQL query syntax debugging (WRDS table structure), matplotlib layout optimization (GridSpec configuration), code structure refinement (function organization)
+Not Used For	Problem definition, analysis logic, metric selection, data validation, interpretation of results
+Student Declaration: I confirm that I have run, checked, and understood every line of code in this project. I can explain all components of the workflow, including data retrieval, metric calculation, risk scoring logic, and chart generation. The problem definition, analytical framework, and interpretation of findings are entirely my own work.
+
+Repository Structure
+text
+acc102-stock-analysis/
+├── README.md                    # Project documentation (this file)
+├── stock_analysis.py            # Main Python script
+├── stock_analysis.ipynb         # Jupyter notebook version
+├── requirements.txt             # Python package dependencies
+├── .gitignore                   # Git ignore rules
+└── figures/                     # Sample output charts (optional)
+    ├── single_analysis_example.png
+    └── comparison_example.png
+License
+This project is created for the ACC102 Mini Assignment at Xi'an Jiaotong-Liverpool University (XJTLU). All financial data is sourced from WRDS and used exclusively for educational purposes. This tool is not financial advice.
+
+Built with Python, WRDS, and attention to detail.
+
+Author: [Your Name]
+
+Course: ACC102 - Data Analysis for Business
+
+Institution: XJTLU
+
+Academic Year: 2025-2026
