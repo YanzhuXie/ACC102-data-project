@@ -225,12 +225,14 @@ Charts: 4-panel visualization with earnings season annotations
 
 Runtime: ~10-20 seconds per analysis (depending on WRDS query speed)
 
-6. Product Link / Demo
+---
+## 6. Product Link / Demo
 GitHub Repository: [Link to this repository]
 
 Demo Video: [Mediasite link - to be added before submission]
 
-7. Reflection & Limitations
+---
+## 7. Reflection & Limitations
 What Worked Well
 Automated Data Pipeline: The WRDS connection and multi-table SQL queries successfully fetch and merge data from three different databases (CRSP stock, CRSP market, Compustat financials) in a single workflow
 
@@ -332,7 +334,8 @@ Data visualization for financial decision-making
 
 Professional documentation and reproducible research practices
 
-8. AI Disclosure
+---
+## 8. AI Disclosure
 Item	Details
 AI Tool	DeepSeek (DeepSeek-R1 model)
 Access Date	April 2026
