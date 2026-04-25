@@ -193,8 +193,6 @@ pip install -r requirements.txt
 3. Run the analysis
 python stock_analysis.py
 
-text
-
 ### Usage Guide
 
 1. Launch the script - The tool will prompt for WRDS credentials
@@ -275,8 +273,6 @@ acc102-stock-analysis/
 └── figures/
 ├── single_analysis_example.png
 └── comparison_example.png
-
-text
 
 ---
 
