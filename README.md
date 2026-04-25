@@ -178,54 +178,42 @@ All price and return charts include light gold background shading for estimated 
 
 ### Prerequisites
 
-1. **WRDS Account:** Register at [wrds-www.wharton.upenn.edu](https://wrds-www.wharton.upenn.edu/)
+1. **WRDS Account:** Register at wrds-www.wharton.upenn.edu
 2. **Python 3.8+** installed on your computer
 3. **Required packages** (install via pip)
 
 ### Installation Steps
-
-```bash
-# 1. Clone the repository
+1. Clone the repository
 git clone https://github.com/YOUR_USERNAME/acc102-stock-analysis.git
 cd acc102-stock-analysis
 
-# 2. Install dependencies
+2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run the analysis
+3. Run the analysis
 python stock_analysis.py
 
-Usage Guide
-Launch the script - The tool will prompt for WRDS credentials
+text
 
-Enter username and password - These are not stored; used only for the current session
+### Usage Guide
 
-View company list - 15 preset companies with tickers and names are displayed
+1. Launch the script - The tool will prompt for WRDS credentials
+2. Enter username and password - These are not stored; used only for the current session
+3. View company list - 15 preset companies with tickers and names are displayed
+4. Select mode:
+   - Press 1 for single company deep analysis
+   - Press 2 for two company comparison
+5. Choose company/companies by entering their number from the list
+6. Review outputs:
+   - Text analysis in the console
+   - 4-panel chart displayed in a pop-up window
+   - Investment reference at the bottom
 
-Select mode:
+### Expected Outputs
 
-Press 1 for single company deep analysis
-
-Press 2 for two company comparison
-
-Choose company/companies by entering their number from the list
-
-Review outputs:
-
-Text analysis in the console
-
-4-panel chart displayed in a pop-up window
-
-Investment reference at the bottom
-
-Expected Outputs
-Console: Detailed performance metrics, financial data, risk assessment
-
-Charts: 4-panel visualization with earnings season annotations
-
-Runtime: ~10-20 seconds per analysis (depending on WRDS query speed)
-
-'''
+- Console: Detailed performance metrics, financial data, risk assessment
+- Charts: 4-panel visualization with earnings season annotations
+- Runtime: ~10-20 seconds per analysis
 
 ---
 
@@ -241,26 +229,26 @@ Runtime: ~10-20 seconds per analysis (depending on WRDS query speed)
 ### What Worked Well
 
 - **Automated Data Pipeline:** The WRDS connection and multi-table SQL queries successfully fetch and merge data from three different sources.
-- **Comprehensive Metrics:** The combination of market performance (returns, volatility, drawdown) with financial health (margins, debt ratio, PE) provides a holistic view of each company.
+- **Comprehensive Metrics:** The combination of market performance with financial health provides a holistic view of each company.
 - **User-Friendly Design:** The numbered menu system and clear English prompts make the tool accessible to non-programmers.
-- **Earnings Season Innovation:** The quarterly background shading adds context that many free tools lack, helping users understand volatility drivers.
-- **Cross-Market Comparison:** Including both US and Chinese companies enables unique insights about market divergence.
+- **Earnings Season Innovation:** The quarterly background shading adds context that many free tools lack.
+- **Cross-Market Comparison:** Including both US and Chinese companies enables unique insights.
 
 ### Limitations
 
 **Data Limitations:**
 
-- **Google (GOOGL/GOOG):** CRSP ticker mapping for Google's dual-class shares proved unreliable. The analysis substitutes Visa (V).
-- **Tencent (TCEHY):** As an OTC-traded ADR, Tencent has sparse CRSP coverage compared to NYSE/NASDAQ-listed stocks.
-- **Financial Data Coverage:** Some companies may show "N/A" for certain financial ratios due to incomplete Compustat filings.
-- **Currency Effects:** Chinese ADR prices are in USD but reflect both underlying stock movements and currency fluctuations.
-- **Survivorship Bias:** The preset company list only includes currently-listed companies.
+- **Google (GOOGL/GOOG):** CRSP ticker mapping unreliable. Substituted with Visa (V).
+- **Tencent (TCEHY):** OTC-traded ADR has sparse CRSP coverage.
+- **Financial Data Coverage:** Some companies may show "N/A" for certain ratios.
+- **Currency Effects:** Chinese ADR prices in USD reflect both stock and currency movements.
+- **Survivorship Bias:** Only currently-listed companies included.
 
 **Methodological Limitations:**
 
-- **Earnings Season Estimation:** The tool uses fixed quarterly windows (mid-Jan/Apr/Jul/Oct) rather than actual earnings announcement dates.
-- **Risk-Free Rate Assumption:** Sharpe ratio calculation assumes a constant 2% risk-free rate.
-- **S&P 500 Benchmark:** Excess return uses S&P 500 as universal benchmark, which may not be ideal for Chinese ADRs.
+- **Earnings Season Estimation:** Uses fixed quarterly windows, not actual dates.
+- **Risk-Free Rate Assumption:** Sharpe ratio assumes constant 2% risk-free rate.
+- **S&P 500 Benchmark:** Not ideal for Chinese ADRs.
 
 ---
 
@@ -270,7 +258,7 @@ Runtime: ~10-20 seconds per analysis (depending on WRDS query speed)
 |------|---------|
 | **AI Tool** | DeepSeek (DeepSeek-R1 model) |
 | **Access Date** | April 2026 |
-| **Used For** | SQL query syntax debugging (WRDS table structure), matplotlib layout optimization (GridSpec configuration), code structure refinement (function organization) |
+| **Used For** | SQL query syntax debugging, matplotlib layout optimization, code structure refinement |
 | **Not Used For** | Problem definition, analysis logic, metric selection, data validation, interpretation of results |
 
 **Student Declaration:** I confirm that I have run, checked, and understood every line of code in this project. I can explain all components of the workflow, including data retrieval, metric calculation, risk scoring logic, and chart generation. The problem definition, analytical framework, and interpretation of findings are entirely my own work.
@@ -278,24 +266,23 @@ Runtime: ~10-20 seconds per analysis (depending on WRDS query speed)
 ---
 
 ## Repository Structure
-
 acc102-stock-analysis/
 ├── README.md
 ├── stock_analysis.py
 ├── stock_analysis.ipynb
 ├── requirements.txt
 ├── .gitignore
-├── figures/
-│ ├── single_analysis_example.png
-│ └── comparison_example.png
+└── figures/
+├── single_analysis_example.png
+└── comparison_example.png
+
+text
 
 ---
 
 ## License
 
 This project is created for the ACC102 Mini Assignment at Xi'an Jiaotong-Liverpool University (XJTLU). All financial data is sourced from WRDS and used exclusively for educational purposes. This tool is not financial advice.
-
-*Built with Python, WRDS, and attention to detail.*
 
 ---
 
