@@ -217,9 +217,9 @@ python stock_analysis.py
 
 ## 6. Product Link / Demo
 
-- **GitHub Repository:https://github.com/YanzhuXie/ACC102-data-project/edit/main/README.md
+- GitHub Repository:https://github.com/YanzhuXie/ACC102-data-project/edit/main/README.md
 - **Demo Video:** https://video.xjtlu.edu.cn/Mediasite/MyMediasite/presentations/d75f54cf74e34f00a723d962130999d21d
-- **
+- Jupyter Notebooks:
 
 ---
 
