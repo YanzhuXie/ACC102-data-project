@@ -217,8 +217,9 @@ python stock_analysis.py
 
 ## 6. Product Link / Demo
 
-- **GitHub Repository:** [Link to this repository]
-- **Demo Video:** [Mediasite link - to be added before submission]
+- **GitHub Repository:https://github.com/YanzhuXie/ACC102-data-project/edit/main/README.md
+- **Demo Video:** https://video.xjtlu.edu.cn/Mediasite/MyMediasite/presentations/d75f54cf74e34f00a723d962130999d21d
+- **
 
 ---
 
